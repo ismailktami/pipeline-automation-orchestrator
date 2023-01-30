@@ -1,14 +1,13 @@
 name: Tests CI
-
 on:
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-#   schedule:
-#     - cron:  '*/15 * * * *'
+
+
 jobs:
-  job1:
+  TEST1:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -25,3 +24,20 @@ jobs:
       - name: Test postman
         run: cat postmannewmanci/README.md  
 
+  TEST2:
+    runs-on: ubuntu-latest
+    if: 
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          repository: ismailktami/robotframeworkdemo
+          path: robotframeworkdemo
+
+      - name: Prepare Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8' 
+          
+      - name: Test Python
+        run: cat robotframeworkdemo/REDME.md
