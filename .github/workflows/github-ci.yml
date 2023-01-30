@@ -1,0 +1,27 @@
+name: Tests CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+#   schedule:
+#     - cron:  '*/15 * * * *'
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          repository: ismailktami/postmannewmanci
+          path: postmannewmanci
+    # INstall Node on the runner
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+          
+      - name: Test postman
+        run: cat postmannewmanci/README.md  
+
