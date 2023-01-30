@@ -6,6 +6,14 @@ on:
     branches: [ "master" ]
 
 jobs:
+  SETUP:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Tests SETUP
+        run: |
+          echo setup
+
   TEST1:
     runs-on: ubuntu-latest
     steps:
@@ -52,9 +60,9 @@ jobs:
 
       - name: Test Save results
         run: |
-          timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
+          timestamp=$(date +"%Y%m%d%H%M%S")
           mkdir -p executions
-          touch tt.json
+          touch DatasetPT-$timestamp.json
           cp DatasetPT-$timestamp.json  executions
 
       - name: Commit changes
